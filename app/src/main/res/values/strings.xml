@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WIFIDIRECT</string>
+    <string name="msg">Please enable all permission</string>
+</resources>

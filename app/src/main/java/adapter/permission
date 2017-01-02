@@ -1,0 +1,66 @@
+if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+   requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                 PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION);
+    //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
+
+}else{
+    getScanningResults();
+   //do something, permission was previously granted; or legacy device
+}
+
+
+
+@Override
+ public void onRequestPermissionsResult(int requestCode, String[] permissions,
+         int[] grantResults) {
+     if (requestCode == PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION
+             && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+         // Do something with granted permission
+        mWifiListener.getScanningResults();
+     }
+ }
+
+
+ if (requestCode == PERMISSIONS_CODE) {
+         for (int i = 0; i < permissions.length; i++) {
+             String permission = permissions[i];
+             int grantResult = grantResults[i];
+
+             if (permission.equals(Manifest.permission.SEND_SMS)) {
+                 if (grantResult == PackageManager.PERMISSION_GRANTED) {
+                     onPPSButtonPress();
+                 } else {
+                     requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_CODE);
+                 }
+             }
+         }
+     }
+ }
+
+
+ /*requestAppPermissions(new String[]{
+                         Manifest.permission.ACCESS_WIFI_STATE,
+                         Manifest.permission.CHANGE_WIFI_STATE,
+                         Manifest.permission.CHANGE_NETWORK_STATE,
+
+                         Manifest.permission.ACCESS_COARSE_LOCATION,
+                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                         Manifest.permission.WRITE_CONTACTS},
+                 R.string.msg,PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION);*/
+
+
+         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                     PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION);
+
+             Log.i("listofprovider","if permission ok");
+             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
+
+         }else{
+            // scaning();
+             //do something, permission was previously granted; or legacy device
+         }*/
+
+
+
+         //
