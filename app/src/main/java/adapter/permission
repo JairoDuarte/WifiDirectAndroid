@@ -64,3 +64,52 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifes
 
 
          //
+
+/*MyFragment.s ="JAiro";
+        if (savedInstanceState == null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_fragment, new MyFragment())
+                    .commit();
+            MyFragment.s = "Duarte";
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_fragment, new MyFragment())
+                    .commit();
+        }*/
+
+
+        WiFiSignal wiFiSignal = wiFiDetail.getWiFiSignal();
+                Strength strength = wiFiSignal.getStrength();
+                ImageView imageView = (ImageView) view.findViewById(R.id.levelImage);
+                imageView.setImageResource(strength.imageResource());
+                imageView.setColorFilter(ContextCompat.getColor(context, strength.colorResource()));
+
+
+
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello World!"
+                        android:id="@+id/txt" />
+
+                    <Button
+                        android:id="@+id/btn_wifi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="OFF"
+                        tools:ignore="HardcodedText"
+                        android:layout_below="@id/txt"
+                        android:visibility="invisible" />
+
+
+
+        android:layout_below="@id/btn_wifi"
+
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+</RelativeLayout>
+
