@@ -1,5 +1,8 @@
 package ma.ac.est_uh2c.www.wifidirect;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,25 +17,26 @@ import android.widget.TextView;
 
 import wifi.WifiReceiver;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener{
-
-    Button setWifi;
+public class MainActivity extends AppCompatActivity {
     WifiManager wifiManager;
     WifiReceiver receiverWifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
 
-        Log.i("1", Integer.toString(wifiManager.getWifiState()));
         scaning();
-
-
-
     }
 
     private void scaning() {
@@ -47,12 +51,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         wifiManager.startScan();
     }
 
-
-    @Override
-    public void onClick(View arg0) {
-
-    }
-
     protected void onPause() {
         super.onPause();
         unregisterReceiver(receiverWifi);
@@ -62,6 +60,5 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         super.onResume();
     }
-
 
 }

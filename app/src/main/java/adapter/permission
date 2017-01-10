@@ -113,3 +113,5 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifes
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 </RelativeLayout>
 
+<string name="app_copyright">Est Casablanca LP GLAASRI 2016-2017</string>
+

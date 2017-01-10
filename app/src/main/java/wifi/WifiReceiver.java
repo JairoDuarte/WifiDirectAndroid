@@ -30,7 +30,6 @@ import wifi.model.WifiDetails;
  */
 
 public  class WifiReceiver extends BroadcastReceiver {
-    private List<WifiDetails> listOfProvider;
     private ListAdapter adapter;
     private ListView listViwProvider;
     private WifiManager wifiManager;
@@ -42,14 +41,13 @@ public  class WifiReceiver extends BroadcastReceiver {
         this.activity = activity;
         this.wifiManager = wifiManager;
         this.wifiList = wifiManager.getScanResults();
-        listOfProvider = new ArrayList<WifiDetails>();
         listViwProvider = (ListView) activity.findViewById(R.id.list_view_wifi);
-        wifiDetailsList = new ArrayList<WifiDetails>();
+        wifiDetailsList = new ArrayList<>();
         listViwProvider.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ImportDialog action = new ImportDialog(activity, (wifiList.get(position)).toString());
+                ImportDialog action = new ImportDialog(activity, (wifiList.get(position)));
                 action.showDialog();
             }
         });
